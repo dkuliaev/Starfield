@@ -36,7 +36,7 @@ class NormalParticle implements Particle
 		starX = 400;
 		starY = 400;
 		starSize = 2;
-		planetSize = 0;
+		planetSize = 0.01;
 		resetPoint = 0;
 		colorPoint1 = (int)(Math.random() * 255);
 		colorPoint2 = (int)(Math.random() * 255);
@@ -47,7 +47,6 @@ class NormalParticle implements Particle
 	{
 		noStroke();
 		fill(255);
-		//fill((int)(Math.random() * 255), (int)(Math.random() * 255), (int)(Math.random() * 255) );
 		ellipse((float)starX, (float)starY, (float)starSize, (float)starSize);
 	}
 	public void move()
@@ -89,18 +88,27 @@ interface Particle
 class OddballParticle implements Particle
 {
 	public void show() {
+		stroke(255);
+		noFill();
+		ellipse((float)starX, (float)starY - 5, 11, 11);
+
 		noStroke();
-		fill(200, 200, 200);
-		rotate(45);
-		rect((float)starX, (float)starY, 20, 10);
-		ellipse((float)starX, (float)starY , 10, 10);
-		ellipse((float)starX, (float)starY + 10 , 10, 10);
-		rotate(-45);
+		fill(0, 0, 255);
+		ellipse((float)starX, (float)starY, 20, 10);
+		noFill();
+		stroke(255);
+		ellipse((float)starX, (float)starY, 20, 10);
+		line((float)starX - 8, (float)starY + 5, (float)starX - 9, (float)starY + 8);
+		line((float)starX + 8, (float)starY + 5, (float)starX + 9, (float)starY + 8);
+		line((float)starX, (float)starY + 5, (float)starX, (float)starY + 9);
+		noStroke();
+		fill(255, 0, 0);
+		ellipse((float)starX, (float)starY - 5, 10, 10);
 
 	}
 	public void move() {
-		starX += (int)(Math.random() * 3);
-		starY += (int)(Math.random() * 2 - 1.5);
+		starX += (int)(Math.random() * 2);
+		starY += (int)(Math.random() * 2);
 	}
 	public void reset() {
 		if(starX > 400)
